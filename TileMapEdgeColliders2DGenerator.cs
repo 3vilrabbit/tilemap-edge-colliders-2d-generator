@@ -25,6 +25,8 @@ public class TileMapEdgeColliders2DGenerator : MonoBehaviour
         
         compositeCollider2D =  GetComponent<CompositeCollider2D>();
         tilemapCollider2D = GetComponent<TilemapCollider2D>();
+        tilemapCollider2D.usedByComposite = true;
+        
         tilemapCollider2D.enabled = true;
         
         List<Vector2> path = new List<Vector2>();
@@ -95,11 +97,11 @@ public class CustomInspectorScript : Editor
         DrawDefaultInspector();
 
         TileMapEdgeColliders2DGenerator edgeColliders2DGenerator = (TileMapEdgeColliders2DGenerator)target;
-        if (GUILayout.Button ("Detect Edges"))
+        if (GUILayout.Button ("Generate EdgeCollider2D"))
         {
             edgeColliders2DGenerator.DetectEdges();
         }
-        if (GUILayout.Button ("Remove All Edges"))
+        if (GUILayout.Button ("Remove all EdgeCollider2D"))
         {
             edgeColliders2DGenerator.RemoveAllEdges();
         }
